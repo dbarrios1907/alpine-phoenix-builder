@@ -47,4 +47,10 @@ RUN set -xe \
 
 FROM base_stage
 
+RUN npm i -g meta \
+    && alias deps.get="meta exec 'mix deps.get' --include-only=apps/control_financiero" \
+    && alias deps.update="meta exec 'mix deps.update' --include-only=apps/control_financiero" \
+    && alias run="meta exec 'sh run.sh' --include-only=apps/control_financiero"
+
 COPY --from=stage /usr/local /usr/local
+
